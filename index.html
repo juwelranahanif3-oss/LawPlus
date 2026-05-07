@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawPlus BD | Solutions - Law & Beyond</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --teal:#0b5961;
+      --deep:#03282e;
+      --dark:#052f35;
+      --gold:#c89b4a;
+      --text:#10242d;
+      --muted:#687782;
+      --line:#edf1f2;
+      --shadow:0 15px 45px rgba(15,35,42,.10);
+      --shadow2:0 24px 70px rgba(15,35,42,.14);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:#fff;color:var(--text);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+    .serif{font-family:'Cinzel',serif}
+
+    header{
+      height:92px;background:#fff;border-bottom:1px solid #eef2f3;
+      display:flex;align-items:center;position:sticky;top:0;z-index:999;
+      box-shadow:0 4px 18px rgba(15,35,42,.035)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:150px;height:auto;display:block}
+    .menu{display:flex;gap:32px;align-items:center;font-size:13px;font-weight:700;color:#27363e}
+    .menu a:hover{color:var(--teal)}
+    .book-btn{
+      background:var(--deep);color:white;padding:13px 22px;border-radius:3px;font-size:13px;
+      font-weight:800;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--deep);transition:.25s
+    }
+    .book-btn:hover{background:var(--teal);transform:translateY(-2px)}
+
+    .hero{
+      min-height:610px;display:flex;align-items:center;position:relative;overflow:hidden;
+      background:#f8fafb;
+    }
+    .hero:before{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.96) 38%,rgba(255,255,255,.68) 58%,rgba(255,255,255,.18) 100%),
+        url("hero.png");
+      background-size:cover;
+      background-position:center right;
+    }
+    .hero:after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:115px;
+      background:linear-gradient(to bottom,transparent,rgba(255,255,255,.82));
+      pointer-events:none
+    }
+    .hero-content{max-width:570px;position:relative;z-index:2}
+    .eyebrow{
+      color:#756332;letter-spacing:2.5px;text-transform:uppercase;
+      font-size:11px;font-weight:800;margin-bottom:20px
+    }
+    .hero h1{
+      font-family:'Cinzel',serif;font-size:69px;line-height:1.06;color:#1b2c34;
+      font-weight:800;letter-spacing:-1px;margin-bottom:18px
+    }
+    .hero h1 span{display:block;color:var(--teal)}
+    .hero p{max-width:475px;color:#4e5d65;font-size:15px;line-height:1.85;margin-bottom:28px}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:28px}
+    .btn{
+      padding:14px 22px;border-radius:3px;background:var(--deep);color:#fff;font-size:13px;
+      font-weight:800;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--deep);transition:.25s
+    }
+    .btn:hover{transform:translateY(-2px);background:var(--teal)}
+    .btn-light{background:#fff;color:var(--deep);border-color:#dbe4e7}
+    .btn-gold{background:var(--gold);border-color:var(--gold);color:#fff}
+    .hero-stats{
+      width:520px;background:rgba(255,255,255,.96);border:1px solid var(--line);box-shadow:var(--shadow);
+      display:grid;grid-template-columns:repeat(3,1fr);border-radius:5px;overflow:hidden;backdrop-filter:blur(10px)
+    }
+    .stat{padding:20px 18px;display:flex;align-items:center;justify-content:center;gap:12px;border-right:1px solid var(--line)}
+    .stat:last-child{border-right:0}
+    .stat i{font-size:25px;color:var(--gold)}
+    .stat strong{display:block;font-size:20px;color:var(--deep);line-height:1}
+    .stat span{display:block;font-size:11px;color:#67767e;margin-top:6px}
+
+    section{padding:78px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 44px}
+    .section-head small{text-transform:uppercase;letter-spacing:2.7px;font-size:11px;font-weight:800;color:#56646c}
+    .section-head h2{font-family:'Cinzel',serif;font-size:40px;line-height:1.2;color:#142832;margin:10px 0 14px}
+    .section-head p{font-size:14px;color:#667680;line-height:1.8}
+
+    .practice-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+    .practice-card{
+      background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:var(--shadow);
+      min-height:252px;text-align:center;padding:28px 16px 22px;transition:.3s;position:relative;overflow:hidden
+    }
+    .practice-card:before{
+      content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--teal),var(--gold));opacity:.85
+    }
+    .practice-card:hover{transform:translateY(-9px);box-shadow:var(--shadow2)}
+    .p-icon{
+      width:68px;height:68px;margin:0 auto 18px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(12,89,97,.12),rgba(199,155,74,.17));
+      color:var(--teal);font-size:33px;display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(12,89,97,.12);box-shadow:0 12px 26px rgba(12,89,97,.10)
+    }
+    .practice-card h3{font-size:14px;margin-bottom:11px;color:#1a2930}
+    .practice-card p{font-size:12px;line-height:1.65;color:#6d7981;min-height:74px}
+    .circle-link{width:28px;height:28px;border-radius:50%;border:1px solid #d8b872;color:var(--gold);display:grid;place-items:center;margin:17px auto 0;font-size:11px;background:#fff}
+
+    .about{
+      background:linear-gradient(135deg,#063238,#073f46);
+      padding:72px 0;color:#fff;position:relative;overflow:hidden
+    }
+    .about:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 45%,rgba(201,155,74,.14),transparent 30%)}
+    .about-grid{position:relative;z-index:2;display:grid;grid-template-columns:.92fr 1.08fr;gap:55px;align-items:center}
+    .founder-photo{
+      height:420px;border-radius:6px;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.28);
+      background:url("founder.png");background-size:cover;background-position:center;
+      border:1px solid rgba(255,255,255,.18)
+    }
+    .signature{
+      position:absolute;left:-28px;bottom:24px;background:#fff;color:#193139;width:245px;border-radius:4px;
+      padding:13px 15px;display:flex;align-items:center;gap:11px;box-shadow:0 18px 50px rgba(0,0,0,.15)
+    }
+    .signature img{width:50px;height:46px;object-fit:contain}
+    .signature small{font-size:11px;color:#6f7b82;font-weight:700;display:block}
+    .signature span{font-family:cursive;color:#23363d;font-size:16px}
+    .about-content small{letter-spacing:2.4px;text-transform:uppercase;color:#d6b46b;font-size:11px;font-weight:800}
+    .about-content h2{
+      font-family:'Cinzel',serif;font-size:37px;margin:13px 0 5px;
+      background:linear-gradient(90deg,#ffffff,#e6d2a5);-webkit-background-clip:text;color:transparent;
+      text-shadow:0 8px 30px rgba(0,0,0,.18)
+    }
+    .about-content h3{font-size:22px;color:#d6b46b;margin-bottom:17px;font-weight:700}
+    .about-content p{font-size:14px;color:#d9e5e8;line-height:1.85;margin-bottom:18px;max-width:600px}
+    .about-inner{display:grid;grid-template-columns:1fr 190px;gap:28px;align-items:end}
+    .check-list{display:grid;gap:12px;margin-bottom:23px}
+    .check-list div{display:flex;align-items:center;gap:10px;font-size:13px;color:#e9f1f2}
+    .check-list i{color:#d6b46b}
+    .counter-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.18)}
+    .counter{height:92px;display:grid;place-items:center;text-align:center;border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+    .counter:nth-child(2),.counter:nth-child(4){border-right:0}.counter:nth-child(3),.counter:nth-child(4){border-bottom:0}
+    .counter strong{display:block;font-size:25px;color:#d6b46b}.counter span{font-size:10px;color:#cbd8da}
+
+    .why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:21px}
+    .why-card{
+      background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);
+      min-height:225px;text-align:center;padding:31px 19px;transition:.3s
+    }
+    .why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow2)}
+    .why-card i{
+      width:62px;height:62px;border-radius:18px;margin:0 auto 18px;display:grid;place-items:center;
+      font-size:29px;color:var(--teal);background:linear-gradient(135deg,rgba(12,89,97,.10),rgba(199,155,74,.13));
+      border:1px solid rgba(12,89,97,.10)
+    }
+    .why-card h3{font-size:14px;margin-bottom:11px}.why-card p{font-size:12px;color:#6d7981;line-height:1.65}
+
+    .cta{
+      padding:48px 0;text-align:center;color:#fff;
+      background:
+      linear-gradient(rgba(4,39,45,.90),rgba(4,39,45,.92)),
+      url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;background-position:center
+    }
+    .cta h2{font-family:'Cinzel',serif;font-size:39px;margin-bottom:8px}
+    .cta p{font-size:14px;color:#d8e4e6;margin-bottom:20px}
+    .cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .testimonial{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);min-height:230px;padding:32px 30px;transition:.3s}
+    .testimonial:hover{transform:translateY(-6px);box-shadow:var(--shadow2)}
+    .quote{font-size:38px;color:#c3cbce;font-family:serif;line-height:1}
+    .testimonial p{font-size:13px;line-height:1.8;color:#68767e;margin:8px 0 15px}
+    .stars{color:#e8a929;letter-spacing:2px;margin-bottom:18px}
+    .client{display:flex;align-items:center;gap:12px}
+    .avatar{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--teal))}
+    .client strong{font-size:13px;display:block}.client small{font-size:11px;color:#6b7880}
+
+    .contact-section{padding:0}
+    .contact-wrap{display:grid;grid-template-columns:.9fr 1fr 1fr;min-height:375px}
+    .contact-info{background:linear-gradient(135deg,#063238,#073f46);color:#fff;padding:48px 44px}
+    .contact-info small{text-transform:uppercase;letter-spacing:2.3px;color:#d6b46b;font-size:11px;font-weight:800}
+    .contact-info h2{font-family:'Cinzel',serif;font-size:32px;margin:9px 0 12px}
+    .contact-info p{font-size:13px;line-height:1.8;color:#d9e5e8;margin-bottom:20px}
+    .info-list{display:grid;gap:12px}.info-list div{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#e8f0f2}.info-list i{color:#d6b46b;margin-top:2px}
+    .social{display:flex;gap:9px;margin-top:22px}.social i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.10)}
+    .form-box{padding:43px 36px;background:#fff}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    input,textarea{width:100%;padding:14px;border:1px solid #e3e9ec;border-radius:3px;font-family:inherit;font-size:13px;outline:none}
+    textarea{grid-column:1/-1;min-height:126px;resize:none}
+    .map-box{padding:16px;background:#eef3f4}
+    .map{
+      width:100%;height:100%;min-height:300px;border-radius:4px;
+      background:
+      linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72)),
+      url("https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=900&q=80");
+      background-size:cover;background-position:center;display:grid;place-items:center;color:#e3342f;font-weight:800
+    }
+    .map i{font-size:40px;display:block;text-align:center}
+
+    footer{background:linear-gradient(135deg,#052c32,#063b42);color:#d3e0e2;padding:58px 0 20px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:38px}
+    .footer-logo img{width:140px;background:#fff;border-radius:3px;padding:6px;margin-bottom:17px}
+    footer h3{color:#fff;font-size:16px;margin-bottom:17px}
+    footer p,footer li{font-size:13px;line-height:1.85;color:#c6d4d6;list-style:none}
+    .newsletter{display:flex;margin-top:14px}.newsletter input{background:transparent;color:#fff;border-color:rgba(255,255,255,.25);border-radius:3px 0 0 3px}.newsletter button{border:0;background:#fff;color:var(--deep);padding:0 16px;border-radius:0 3px 3px 0}
+    .copyright{margin-top:40px;padding-top:18px;border-top:1px solid rgba(255,255,255,.13);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:#b5c5c8}
+    .wa-float{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font-size:31px;z-index:999;box-shadow:0 14px 35px rgba(37,211,102,.42)}
+
+    @media(max-width:1080px){
+      .menu{display:none}.practice-grid{grid-template-columns:repeat(3,1fr)}.why-grid{grid-template-columns:repeat(2,1fr)}
+      .about-grid,.contact-wrap{grid-template-columns:1fr}.about-inner{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:650px){
+      header{height:auto;padding:14px 0}.nav{flex-direction:column}.brand img{width:130px}
+      .hero{min-height:auto;padding:70px 0;background-position:center}
+      .hero h1{font-size:42px}.hero-stats,.practice-grid,.why-grid,.testimonials,.footer-grid,.form-grid{grid-template-columns:1fr}
+      .hero-stats{width:100%}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}
+      .section-head h2{font-size:31px}.signature{left:15px}.contact-info,.form-box{padding:32px 22px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home"><img src="logo.png" alt="LawPlus"></a>
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#practice">Practice Areas</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="book-btn" href="https://wa.me/8801933887766" target="_blank"><i class="fa-regular fa-calendar-check"></i> Book Consultation</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">Welcome to LawPlus BD</div>
+      <h1>Solutions <span>Law & Beyond</span></h1>
+      <p>We provide effective legal solutions with professionalism, integrity and dedication. Your problems, our responsibility.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#practice">Our Services <i class="fa-solid fa-arrow-right"></i></a>
+        <a class="btn btn-light" href="tel:+8801933887766"><i class="fa-solid fa-phone"></i> Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><i class="fa-solid fa-scale-balanced"></i><div><strong>100%</strong><span>Client Satisfaction</span></div></div>
+        <div class="stat"><i class="fa-regular fa-clock"></i><div><strong>24/7</strong><span>Support Available</span></div></div>
+        <div class="stat"><i class="fa-solid fa-users"></i><div><strong>5+</strong><span>Years Experience</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <div class="container">
+    <div class="section-head">
+      <small>Practice Areas</small>
+      <h2>Our Legal Practice Areas</h2>
+      <p>We provide expert legal services in diverse areas to meet your personal and business needs.</p>
+    </div>
+    <div class="practice-grid">
+      <div class="practice-card"><div class="p-icon"><i class="fa-solid fa-building-columns"></i></div><h3>Corporate Law</h3><p>Legal support for business formation, compliance and corporate matters.</p><div class="circle-link"><i class="fa-solid fa-arrow-right"></i></div></div>
+      <div class="practice-card"><div class="p-icon"><i class="fa-solid fa-scale-balanced"></i></div><h3>Civil Litigation</h3><p>We represent clients in civil disputes with effective and strategic legal solutions.</p><div class="circle-link"><i class="fa-solid fa-arrow-right"></i></div></div>
+      <div class="practice-card"><div class="p-icon"><i class="fa-solid fa-house-chimney"></i></div><h3>Property Law</h3><p>Assistance in property documentation, transfer, disputes and legal verification.</p><div class="circle-link"><i class="fa-solid fa-arrow-right"></i></div></div>
+      <div class="practice-card"><div class="p-icon"><i class="fa-solid fa-users"></i></div><h3>Family Law</h3><p>Support in family matters including divorce, custody and inheritance.</p><div class="circle-link"><i class="fa-solid fa-arrow-right"></i></div></div>
+      <div class="practice-card"><div class="p-icon"><i class="fa-solid fa-file-contract"></i></div><h3>Legal Documentation</h3><p>We prepare all kinds of legal documents accurately and professionally.</p><div class="circle-link"><i class="fa-solid fa-arrow-right"></i></div></div>
+      <div class="practice-card"><div class="p-icon"><i class="fa-solid fa-user-tie"></i></div><h3>Legal Consultancy</h3><p>Get expert legal advice for your personal and business matters.</p><div class="circle-link"><i class="fa-solid fa-arrow-right"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="founder-photo">
+      <div class="signature">
+        <img src="logo.png" alt="LawPlus">
+        <div><small>Founder</small><span>Ashifur Rahman Rasha</span></div>
+      </div>
+    </div>
+    <div class="about-content">
+      <small>About Founder</small>
+      <h2>MD. Ashifur Rahman Rasha</h2>
+      <h3>Founder, LawPlus Bd</h3>
+      <div class="about-inner">
+        <div>
+          <p>With a vision to deliver excellence in legal services, MD. Ashifur Rahman Rasha established LawPlus Bd to provide reliable, efficient and result-driven legal solutions.</p>
+          <div class="check-list">
+            <div><i class="fa-regular fa-circle-check"></i> Years of professional legal experience</div>
+            <div><i class="fa-regular fa-circle-check"></i> Dedicated to client satisfaction</div>
+            <div><i class="fa-regular fa-circle-check"></i> Effective and strategic legal solutions</div>
+            <div><i class="fa-regular fa-circle-check"></i> Professional, honest & reliable support</div>
+          </div>
+          <a class="btn btn-light" href="#contact">More About Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="counter-grid">
+          <div class="counter"><strong>5+</strong><span>Years Experience</span></div>
+          <div class="counter"><strong>500+</strong><span>Clients Served</span></div>
+          <div class="counter"><strong>300+</strong><span>Cases Solved</span></div>
+          <div class="counter"><strong>100%</strong><span>Success Rate</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <small>Why Choose Us</small>
+      <h2>Why Clients Choose LawPlus</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><i class="fa-solid fa-users"></i><h3>Experienced Team</h3><p>Professional and experienced legal team dedicated to your case.</p></div>
+      <div class="why-card"><i class="fa-solid fa-user-shield"></i><h3>Client Focused</h3><p>We prioritize your needs and provide personalized legal solutions.</p></div>
+      <div class="why-card"><i class="fa-solid fa-lock"></i><h3>Confidentiality</h3><p>Your information is always safe and handled with strict confidentiality.</p></div>
+      <div class="why-card"><i class="fa-solid fa-rocket"></i><h3>Fast & Reliable</h3><p>We value your time and ensure faster and reliable legal services.</p></div>
+      <div class="why-card"><i class="fa-solid fa-headset"></i><h3>24/7 Support</h3><p>Our team is always available to assist you whenever you need.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Need Legal Assistance?</h2>
+    <p>Get professional legal support today. We are always here to help you.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://wa.me/8801933887766" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp Now</a>
+      <a class="btn btn-light" href="tel:+8801933887766"><i class="fa-solid fa-phone"></i> +880 1933 887766</a>
+      <a class="btn btn-light" href="mailto:ashifur@lawplusbd.com"><i class="fa-solid fa-envelope"></i> ashifur@lawplusbd.com</a>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="container">
+    <div class="section-head">
+      <small>Testimonials</small>
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial"><div class="quote">“</div><p>LawPlus Bd provided me excellent legal support. Their professionalism and dedication is truly impressive.</p><div class="stars">★★★★★</div><div class="client"><div class="avatar">J</div><div><strong>Jahid Hasan</strong><small>Businessman</small></div></div></div>
+      <div class="testimonial"><div class="quote">“</div><p>Very satisfied with their legal service. They handled my case with great expertise and care.</p><div class="stars">★★★★★</div><div class="client"><div class="avatar">F</div><div><strong>Farzana Akter</strong><small>Entrepreneur</small></div></div></div>
+      <div class="testimonial"><div class="quote">“</div><p>Highly professional team. They gave me the right advice and solved my problem quickly.</p><div class="stars">★★★★★</div><div class="client"><div class="avatar">R</div><div><strong>Rasel Ahmed</strong><small>Client</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <small>Get in Touch</small>
+      <h2>Contact With Us</h2>
+      <p>We are here to answer your questions and provide the best legal support.</p>
+      <div class="info-list">
+        <div><i class="fa-solid fa-phone"></i> +880 1933 887766</div>
+        <div><i class="fa-solid fa-envelope"></i> ashifur@lawplusbd.com</div>
+        <div><i class="fa-solid fa-globe"></i> www.lawplusbd.com</div>
+        <div><i class="fa-solid fa-location-dot"></i> Apt A5, House 3C, Road 23/C, Gulshan 1, Dhaka</div>
+      </div>
+      <div class="social"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-instagram"></i></div>
+    </div>
+    <div class="form-box">
+      <div class="form-grid">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <input type="text" placeholder="Phone Number">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Your Message"></textarea>
+      </div>
+      <br>
+      <a class="btn" href="mailto:ashifur@lawplusbd.com">Send Message <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="map-box">
+      <div class="map"><div><i class="fa-solid fa-location-dot"></i><br>LawPlus Bd</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-logo">
+      <img src="logo.png" alt="LawPlus">
+      <p>LawPlus Bd is committed to providing effective legal solutions with integrity, dedication and professionalism.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <ul><li>Home</li><li>About Us</li><li>Practice Areas</li><li>Services</li><li>Blog</li><li>Contact</li></ul>
+    </div>
+    <div>
+      <h3>Practice Areas</h3>
+      <ul><li>Corporate Law</li><li>Civil Litigation</li><li>Property Law</li><li>Family Law</li><li>Legal Documentation</li><li>Legal Consultancy</li></ul>
+    </div>
+    <div>
+      <h3>Newsletter</h3>
+      <p>Subscribe to get our latest updates and legal insights.</p>
+      <div class="newsletter"><input type="email" placeholder="Your Email"><button><i class="fa-solid fa-paper-plane"></i></button></div>
+    </div>
+  </div>
+  <div class="container copyright">
+    <span>© 2026 LawPlus Bd. All Rights Reserved.</span>
+    <span>Privacy Policy &nbsp; | &nbsp; Terms & Conditions</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/8801933887766" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+</body>
+</html>
